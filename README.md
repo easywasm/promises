@@ -23,7 +23,6 @@ Then use in C like this:
 
 ```c
 #include "wasm_promise_callbacks.h"
-#include <stdio.h>
 
 // this is exposed function that normally retuns a promise
 __attribute__((import_module("env"), import_name("example")))
