@@ -1,0 +1,21 @@
+{
+  "name": "wasm_promise_callbacks",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Call js promise-functions from C wasm, with callbacks instead of asyncify/etc.",
+  "main": "wasm_promise_callbacks.js",
+  "scripts": {
+    "test": "node --test",
+    "build": "/opt/wasi-sdk/bin/clang test.c -o test.wasm"
+  },
+  "keywords": [
+    "wasm",
+    "async",
+    "promise"
+  ],
+  "author": "konsumer",
+  "license": "MIT",
+  "devDependencies": {
+    "easywasi": "^0.0.6"
+  }
+}
