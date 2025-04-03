@@ -2,7 +2,7 @@ This will let you call js promise-functions from C wasm, with callbacks instead 
 
 ### host
 
-I currently only have JS (browser/node/etc) host made:
+#### JS (node/browser/etc)
 
 ```js
 import { wrapPromise, setCallback } from 'wasm_promise_callbacks'
