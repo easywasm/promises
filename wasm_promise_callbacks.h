@@ -1,7 +1,9 @@
 #ifndef WASM_PROMISE_CALLBACKS_H
 #define WASM_PROMISE_CALLBACKS_H
 
-#include <stdlib.h>
+#ifndef NULL
+#define NULL 0
+#endif
 
 // Register a callback to be invoked when a promise resolves
 void wasm_promise_callbacks_register(int promise_id, void (*callback)());

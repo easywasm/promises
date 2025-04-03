@@ -1,7 +1,6 @@
 import { test } from "node:test";
 import path from "node:path";
 import { readFile } from "node:fs/promises";
-import WasiPreview1 from "easywasi";
 
 import {
   wrapPromise,
@@ -9,14 +8,12 @@ import {
   initWasmPromiseCallbacks,
 } from "./wasm_promise_callbacks.js";
 
-const wasi_snapshot_preview1 = new WasiPreview1();
-
 const example = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
 let finishedTest = false;
 
 const imports = {
-  wasi_snapshot_preview1,
+  // wasi_snapshot_preview1,
   env: {
     example: wrapPromise(example),
     set_callback: setCallback,
@@ -33,7 +30,6 @@ const wasmBytes = await readFile(
 );
 const mod = await WebAssembly.compile(wasmBytes);
 const instance = await WebAssembly.instantiate(mod, imports);
-wasi_snapshot_preview1.wasm = instance.exports;
 
 // Initialize the promise callbacks with the instance's exports
 initWasmPromiseCallbacks(instance.exports);

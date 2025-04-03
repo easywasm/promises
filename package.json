@@ -6,7 +6,7 @@
   "main": "wasm_promise_callbacks.js",
   "scripts": {
     "test": "node --test",
-    "build": "/opt/wasi-sdk/bin/clang test.c -o test.wasm"
+    "build": "/opt/wasi-sdk/bin/clang test.c -o test.wasm -Wl,--no-entry -Wl,--strip-all -fno-exceptions -nostartfiles"
   },
   "keywords": [
     "wasm",

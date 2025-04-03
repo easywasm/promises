@@ -1,5 +1,4 @@
 #include "wasm_promise_callbacks.h"
-#include <stdio.h>
 
 __attribute__((import_module("env"), import_name("example")))
 int example();
