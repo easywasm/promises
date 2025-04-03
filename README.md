@@ -1,5 +1,7 @@
 This will let you call js promise-functions from C wasm, with callbacks instead of asyncify/etc.
 
+Essentially, you pick a host implementation, and a wasm-implementation for your language, and they will allow callbacks.
+
 ### host
 
 #### JS (node/browser/etc)
