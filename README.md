@@ -1,5 +1,9 @@
 This will let you call js promise-functions from C wasm, with callbacks instead of asyncify/etc.
 
+### host
+
+I currently only have JS (browser/node/etc) host made:
+
 ```js
 import { wrapPromise, setCallback } from 'wasm_promise_callbacks'
 
@@ -19,7 +23,10 @@ const instance = await WebAssembly.instantiate(mod, imports)
 instance.exports.test()
 ```
 
-Then use in C like this:
+### wasm
+
+
+#### C
 
 ```c
 #include "wasm_promise_callbacks.h"
