@@ -21,7 +21,7 @@ const mod = await WebAssembly.compile(wasmBytes);
 const instance = await WebAssembly.instantiate(mod, imports);
 
 // wait for getting the response back
-const response = await callPromise(instance.exports, instance.exports.test());
+const response = await callPromise(instance.exports, instance.exports.test);
 ```
 
 ### wasm
