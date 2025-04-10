@@ -7,7 +7,7 @@ Essentially, you pick a host implementation, and a wasm-implementation for your 
 #### JS (node/browser/etc)
 
 ```js
-import { wrapPromise, callPromise } from "wasm_promise_callbacks";
+import { wrapPromise, callPromise } from "@easywasm/promises";
 
 const imports = {
   env: {
