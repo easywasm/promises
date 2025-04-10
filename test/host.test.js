@@ -2,8 +2,8 @@ import { test } from "node:test";
 import { readFile } from 'node:fs/promises'
 import { wrapPromise, callPromise } from '../callback_system.js'
 
-import MemoryView from 'cmem_helpers'
-import WasiPreview1 from 'easywasi'
+import MemoryView from '@easywasm/memory'
+import WasiPreview1 from '@easywasm/wasi'
 
 // this is sort of boilerplate
 // gives you a WASI instance with nice mem utils (dataview, string, etc)

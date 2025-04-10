@@ -1,6 +1,3 @@
-import { readFile } from "node:fs/promises";
-import WasiPreview1 from "easywasi";
-
 // Map to track active promises
 const promiseMap = new Map();
 let nextPromiseId = 0;

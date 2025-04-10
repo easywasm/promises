@@ -16,7 +16,7 @@
   "author": "konsumer",
   "license": "MIT",
   "devDependencies": {
-    "easywasi": "^0.0.7",
-    "cmem_helpers": "^1.0.1"
+    "@easywasm/memory": "^0.0.3",
+    "@easywasm/wasi": "^0.0.8"
   }
 }
