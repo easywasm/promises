@@ -1,6 +1,6 @@
 {
   "name": "@easywasm/promises",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "Call js promise-functions from C wasm, with callbacks instead of asyncify/etc.",
   "main": "callback_system.js",
