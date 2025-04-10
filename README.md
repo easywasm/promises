@@ -1,52 +1,36 @@
 This will let you call js promise-functions from C wasm, with callbacks instead of asyncify/etc.
 
-Essentially, you pick a host implementation, and a wasm-implementation for your language, and they will allow callbacks.
+Essentially, you pick a host implementation, and a wasm-implementation for your language, and they will allow callbacks, and it's able to respond.
 
 ### host
 
 #### JS (node/browser/etc)
 
 ```js
-import { wrapPromise, setCallback } from 'wasm_promise_callbacks'
-
-const example = () => new Promise(resolve => setTimeout(resolve, 1000))
+import { wrapPromise, callPromise } from "wasm_promise_callbacks";
 
 const imports = {
   env: {
-    example: wrapPromise(example),
-    set_callback: setCallback
-  }
-}
+    // here is a promise-returning function that the wasm will get the output of
+    example_host_func: wrapPromise((messageP) => new Promise((resolve) => setTimeout(() => resolve('nice!'), 1000)))
+  },
+};
 
-const wasmBytes = '...'
-const mod = await WebAssembly.compile(wasmBytes)
-const instance = await WebAssembly.instantiate(mod, imports)
+const wasmBytes = "...";
+const mod = await WebAssembly.compile(wasmBytes);
+const instance = await WebAssembly.instantiate(mod, imports);
 
-instance.exports.test()
+// wait for getting the response back
+const response = await callPromise(instance.exports, instance.exports.test());
 ```
 
 ### wasm
 
-
 #### C
 
-```c
-#include "wasm_promise_callbacks.h"
+For a C example, that can perform http-requests and process it, see:
 
-// this is exposed function that normally retuns a promise
-__attribute__((import_module("env"), import_name("example")))
-int example();
+- [test.c](test/test.c)
+- [host.test.js](test/host.test.js)
 
-void finished() {
-  // this will be called when it's done
-}
-
-__attribute__((export_name("test")))
-void test() {
-  // Initialize the callback system
-  wasm_promise_callbacks_init();
-
-  // Call the async function and register callback
-  wasm_promise_callbacks_register(example(), &finished);
-}
-```
+I am faking http, but you can see the result is the output of `mycallback`

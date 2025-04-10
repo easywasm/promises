@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "type": "module",
   "description": "Call js promise-functions from C wasm, with callbacks instead of asyncify/etc.",
-  "main": "wasm_promise_callbacks.js",
+  "main": "callback_system.js",
   "scripts": {
     "test": "node --test",
-    "build": "/opt/wasi-sdk/bin/clang test.c -o test.wasm -Wl,--no-entry -Wl,--strip-all -fno-exceptions -nostartfiles"
+    "build": "/opt/wasi-sdk/bin/clang -o test/test.wasm -Wl,--strip-all -fno-exceptions -I . test/test.c"
   },
   "keywords": [
     "wasm",
@@ -16,6 +16,7 @@
   "author": "konsumer",
   "license": "MIT",
   "devDependencies": {
-    "easywasi": "^0.0.6"
+    "easywasi": "^0.0.7",
+    "cmem_helpers": "^1.0.1"
   }
 }
